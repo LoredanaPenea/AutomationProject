@@ -25,33 +25,33 @@ namespace AutomationProject.Pages
         IWebElement alertsFrameButton => webDriver.FindElement(By.XPath("//div[@class='card mt-4 top-card'][3]"));
         IWebElement widgetsButton => webDriver.FindElement(By.XPath("//div[@class='card mt-4 top-card'][4]"));
         IWebElement interactionsButton => webDriver.FindElement(By.XPath("//div[@class='card mt-4 top-card'][5]"));
-        public void ClickOnElements()
+        public void ClickOnElementsCard()
         {
             elementMethods.ClickOnElement(elementsButton);
            // elementMethods.ClickOnElement(cards[0]);
         }
         
-        public void ClickOnFormsElement()
+        public void ClickOnFormsCard()
         {
             elementMethods.ClickOnElement(formsButton);
         }
 
-        public void ClickOnAlertsFrameElement()
+        public void ClickOnAlertsFrameCard()
         {
             elementMethods.ClickOnElement(cards[2]);
         }
 
-        public void ClickOnWidgetsElement()
+        public void ClickOnWidgetsCard()
         {
             elementMethods.ClickOnElement(widgetsButton);
         }
 
-        public void ClickOnInteractionsElement()
+        public void ClickOnInteractionsCard()
         {
             elementMethods.ClickOnElement(cards[4]);
         }
 
-        public void ClickOnBookStoreElement()
+        public void ClickOnBookStoreCard()
         {
             elementMethods.ClickOnElement(cards[5]);
         }
