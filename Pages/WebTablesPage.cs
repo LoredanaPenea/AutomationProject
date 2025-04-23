@@ -41,10 +41,9 @@ namespace AutomationProject.Pages
             elementMethods.FillElement(departmentField, department);
 
             elementMethods.ClickOnElement(registrationSubmitBtn);
-
         }
 
-        public int GetNumberOfCellsFromTable()
+        public int GetNumberOfRowsFromTable()
         {
             var rows = webDriver.FindElements(By.CssSelector(".rt-tbody .rt-tr-group"));
             int numberOfRows = 0;

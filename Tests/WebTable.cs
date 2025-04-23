@@ -39,7 +39,7 @@ namespace AutomationProject.Tests
 
             webTablesPage.AddNewRecordInTable();
             webTablesPage.FillRegistrationForm("Loredana", "Penea", "loredana.penea@email.com", "36", "5500", "IT");
-            int rowIndex = webTablesPage.GetNumberOfCellsFromTable();
+            int rowIndex = webTablesPage.GetNumberOfRowsFromTable();
             
             string firstNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "First Name");
             string lastNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "Last Name");
@@ -58,7 +58,7 @@ namespace AutomationProject.Tests
             webTablesPage.FillRegistrationForm("Ionela", "Ionescu", "ionela.ionescu@email.com", "44", "6000", "Finance");
             webTablesPage.AddNewRecordInTable();
             webTablesPage.FillRegistrationForm("Mihai", "Marinescu", "mihai.marinescu@email.com", "29", "5500", "Platform");
-            rowIndex = webTablesPage.GetNumberOfCellsFromTable();
+            rowIndex = webTablesPage.GetNumberOfRowsFromTable();
 
             firstNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "First Name");
             lastNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "Last Name");

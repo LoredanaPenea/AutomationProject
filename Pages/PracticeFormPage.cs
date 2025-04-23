@@ -24,6 +24,7 @@ namespace AutomationProject.Pages
         IWebElement emailElement => webDriver.FindElement(By.Id("userEmail"));
         IWebElement mobilePhoneElement => webDriver.FindElement(By.Id("userNumber"));
         IWebElement currentAddressElement => webDriver.FindElement(By.Id("currentAddress"));
+
         IWebElement genderMaleRadioButton => webDriver.FindElement(By.XPath("//label[@for='gender-radio-1']"));
         IWebElement genderFemaleRadioButton => webDriver.FindElement(By.XPath("//label[@for='gender-radio-2']"));
         IWebElement genderOtherRadioButton => webDriver.FindElement(By.XPath("//label[@for='gender-radio-3']"));
@@ -73,6 +74,8 @@ namespace AutomationProject.Pages
             }
 
         }
+
+
     }
 
 }
