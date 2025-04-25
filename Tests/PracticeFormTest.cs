@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class PracticeForms
+    public class PracticeFormTest
     {
         IWebDriver webDriver;
         ElementMethods elementMethods;

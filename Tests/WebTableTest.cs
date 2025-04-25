@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class WebTable
+    public class WebTableTest
     {
         IWebDriver webDriver;
         ElementMethods elementMethods;
