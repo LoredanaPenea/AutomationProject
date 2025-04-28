@@ -19,7 +19,7 @@ namespace AutomationProject.Tests
         WebTablesPage webTablesPage;
 
         [Test]
-        public void WebTableMethod()
+        public void WebTableAddRecordsInTable()
         {
             webDriver = new ChromeDriver();
             webDriver.Navigate().GoToUrl("https://demoqa.com/");
@@ -40,34 +40,30 @@ namespace AutomationProject.Tests
             webTablesPage.AddNewRecordInTable();
             webTablesPage.FillRegistrationForm("Loredana", "Penea", "loredana.penea@email.com", "36", "5500", "IT");
             int rowIndex = webTablesPage.GetNumberOfRowsFromTable();
-            
-            string firstNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "First Name");
-            string lastNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "Last Name");
-            string emailInTable = webTablesPage.GetColumnFromRow(rowIndex, "Email");
-            string ageInTable = webTablesPage.GetColumnFromRow(rowIndex, "Age");
-            string salaryInTable = webTablesPage.GetColumnFromRow(rowIndex, "Salary");
-            string departamentInTable = webTablesPage.GetColumnFromRow(rowIndex, "Department");
 
-            Assert.That(firstNameInTable.Equals("Loredana"));
-            if (lastNameInTable.Equals("Penea"))
-            {
-                Console.WriteLine($"Is true, last name is: {lastNameInTable}");
-            }
+            bool result = webTablesPage.VerifySubmittedDataInTable(rowIndex,"Loredana","Penea", "loredana.penea@email.com", "36", "5500", "IT");
+            
+            if (result)
+                Console.WriteLine("Is true, data was added correctly in the table");
 
             webTablesPage.AddNewRecordInTable();
             webTablesPage.FillRegistrationForm("Ionela", "Ionescu", "ionela.ionescu@email.com", "44", "6000", "Finance");
+           
             webTablesPage.AddNewRecordInTable();
             webTablesPage.FillRegistrationForm("Mihai", "Marinescu", "mihai.marinescu@email.com", "29", "5500", "Platform");
             rowIndex = webTablesPage.GetNumberOfRowsFromTable();
+            result = webTablesPage.VerifySubmittedDataInTable(rowIndex, "Mihai", "Marinescu", "mihai.marinescu@email.com", "29", "5500", "Platform");
+            if(result) Console.WriteLine("Last record is added with correct data");
 
-            firstNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "First Name");
-            lastNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "Last Name");
-            emailInTable = webTablesPage.GetColumnFromRow(rowIndex, "Email");
-            ageInTable = webTablesPage.GetColumnFromRow(rowIndex, "Age");
-            salaryInTable = webTablesPage.GetColumnFromRow(rowIndex, "Salary");
-            departamentInTable = webTablesPage.GetColumnFromRow(rowIndex, "Department");
+            /*
+           string firstNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "First Name");
+           string lastNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "Last Name");
+           string emailInTable = webTablesPage.GetColumnFromRow(rowIndex, "Email");
+           string ageInTable = webTablesPage.GetColumnFromRow(rowIndex, "Age");
+           string salaryInTable = webTablesPage.GetColumnFromRow(rowIndex, "Salary");
+           string departamentInTable = webTablesPage.GetColumnFromRow(rowIndex, "Department");
 
-            Console.WriteLine($"Last entry from Registration form is: {firstNameInTable}  {lastNameInTable}");
+             Console.WriteLine($"Last entry from Registration form is: {firstNameInTable}  {lastNameInTable}"); */
 
         }
 

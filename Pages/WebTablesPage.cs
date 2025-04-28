@@ -31,7 +31,7 @@ namespace AutomationProject.Pages
         {
             elementMethods.ClickOnElement(addBtnInWebTable);
         }
-        public void FillRegistrationForm( string firstName, string lastName, string email, string age, string salary, string department)
+        public void FillRegistrationForm(string firstName, string lastName, string email, string age, string salary, string department)
         {
             elementMethods.FillElement(firstNameField, firstName);
             elementMethods.FillElement(lastNameField, lastName);
@@ -86,9 +86,23 @@ namespace AutomationProject.Pages
             return column.Text;
         }
 
-        public bool VerifySubmittedDatainTable()
+        public bool VerifySubmittedDataInTable(int rowIndex, string firstName, string lastName, string email, string age, string salary, string department)
         {
             bool correctData = false;
+            string firstNameInTable = GetColumnFromRow(rowIndex, "First Name");
+            string lastNameInTable = GetColumnFromRow(rowIndex, "Last Name");
+            string emailInTable = GetColumnFromRow(rowIndex, "Email");
+            string ageInTable = GetColumnFromRow(rowIndex, "Age");
+            string salaryInTable = GetColumnFromRow(rowIndex, "Salary");
+            string departamentInTable = GetColumnFromRow(rowIndex, "Department");
+
+            if (firstNameInTable.Equals(firstName) &&
+           lastNameInTable.Equals(lastName) &&
+           emailInTable.Equals(email) &&
+           ageInTable.Equals(age) &&
+           salaryInTable.Equals(salary) &&
+           departamentInTable.Equals(department))
+                correctData = true;
 
             return correctData;
         }
