@@ -1,4 +1,5 @@
-﻿using AutomationProject.HelperMethods;
+﻿using AutomationProject.BasePage;
+using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -10,9 +11,8 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class FramesTest
+    public class FramesTest : TestBasePage
     {
-        IWebDriver webDriver;
         ElementMethods elementMethods;
         HomePage homePage;
         CommonPage commonPage;
@@ -23,16 +23,12 @@ namespace AutomationProject.Tests
         [Test]
         public void FramesInteractions()
         {
-            webDriver = new ChromeDriver();
-            webDriver.Navigate().GoToUrl("https://demoqa.com/");
-            webDriver.Manage().Window.Maximize();
+            elementMethods = new ElementMethods(driver);
+            homePage = new HomePage(driver);
+            commonPage = new CommonPage(driver);
+            framesPage = new FramesPage(driver);
 
-            elementMethods = new ElementMethods(webDriver);
-            homePage = new HomePage(webDriver);
-            commonPage = new CommonPage(webDriver);
-            framesPage = new FramesPage(webDriver);
-
-            jsMethods = new JavaScriptMethods(webDriver);
+            jsMethods = new JavaScriptMethods(driver);
             jsMethods.ScrollPageVertically(1000);
 
             homePage.ClickOnAlertsFrameCard();
@@ -50,16 +46,12 @@ namespace AutomationProject.Tests
         [Test]
         public void NestedFrames()
         {
-            webDriver = new ChromeDriver();
-            webDriver.Navigate().GoToUrl("https://demoqa.com/");
-            webDriver.Manage().Window.Maximize();
+            elementMethods = new ElementMethods(driver);
+            homePage = new HomePage(driver);
+            commonPage = new CommonPage(driver);
+            nestedFramesPage = new NestedFramesPage(driver);
 
-            elementMethods = new ElementMethods(webDriver);
-            homePage = new HomePage(webDriver);
-            commonPage = new CommonPage(webDriver);
-            nestedFramesPage = new NestedFramesPage(webDriver);
-
-            jsMethods = new JavaScriptMethods(webDriver);
+            jsMethods = new JavaScriptMethods(driver);
             jsMethods.ScrollPageVertically(1000);
 
             homePage.ClickOnAlertsFrameCard();
@@ -73,32 +65,25 @@ namespace AutomationProject.Tests
 
         }
         [Test]
-        public void Modals() // to be updated
+        public void Modals() 
         {
-            webDriver = new ChromeDriver();
-            webDriver.Navigate().GoToUrl("https://demoqa.com/");
-            webDriver.Manage().Window.Maximize();
+            elementMethods = new ElementMethods(driver);
+            jsMethods = new JavaScriptMethods(driver);
 
-            elementMethods = new ElementMethods(webDriver);
+            homePage = new HomePage(driver);
+            commonPage = new CommonPage(driver);
+            var modalDialogsPage = new ModalDialogsPage(driver);
 
-            IJavaScriptExecutor jsExec = (IJavaScriptExecutor)webDriver;
-            jsExec.ExecuteScript("window.scrollTo(0,1000)");
+            jsMethods.ScrollPageVertically(1000);
 
-            IWebElement alertsFramesButton = webDriver.FindElement(By.XPath("//div[@class='card mt-4 top-card'][3]"));
-            elementMethods.ClickOnElement(alertsFramesButton);
+            homePage.ClickOnAlertsFrameCard();
+            commonPage.GoToMenu("Modal Dialogs");
 
-            List<IWebElement> listFrames = webDriver.FindElements(By.XPath("//div[@class='element-list collapse show']//li[@class='btn btn-light ']")).ToList();
-            elementMethods.ClickOnElement(listFrames[4]);
+            modalDialogsPage.ClickSmallModalBtn();
+            modalDialogsPage.CloseSmallModal();
+            modalDialogsPage.ClickLargeModalBtn();
+            modalDialogsPage.CloseLargeModal();
+        } 
 
-            IWebElement smallModal = webDriver.FindElement(By.Id("showSmallModal"));
-            elementMethods.ClickOnElement(smallModal);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            //webDriver.Close();
-              webDriver.Dispose();
-        }
     }
 }

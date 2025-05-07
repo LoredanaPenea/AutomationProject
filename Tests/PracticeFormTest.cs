@@ -1,4 +1,5 @@
-﻿using AutomationProject.HelperMethods;
+﻿using AutomationProject.BasePage;
+using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -11,28 +12,22 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class PracticeFormTest
+    public class PracticeFormTest : TestBasePage
     {
-        IWebDriver webDriver;
         ElementMethods elementMethods;
         HomePage homePage;
         CommonPage commonPage;
         PracticeFormPage practiceFormPage;
 
         [Test]
-
         public void StudentRegistrationForm()
         {
-            webDriver = new ChromeDriver();
-            webDriver.Navigate().GoToUrl("https://demoqa.com/");
-            webDriver.Manage().Window.Maximize();
+            elementMethods = new ElementMethods(driver);
+            homePage = new HomePage(driver);
+            commonPage = new CommonPage(driver);
+            practiceFormPage = new PracticeFormPage(driver);
 
-            elementMethods = new ElementMethods(webDriver);
-            homePage = new HomePage(webDriver);
-            commonPage = new CommonPage(webDriver);
-            practiceFormPage = new PracticeFormPage(webDriver);
-
-            IJavaScriptExecutor jsExec = (IJavaScriptExecutor)webDriver;
+            IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
             jsExec.ExecuteScript("window.scrollTo(0,1000)");
 
             homePage.ClickOnFormsCard();
@@ -44,7 +39,6 @@ namespace AutomationProject.Tests
             practiceFormPage.CompleteFirstRegion("Ion", "Popa", "ionpopa@gmail.com","0987654321", "Strada Alexandru Macedonski nr.55");
             practiceFormPage.SelectGender("Male");
             practiceFormPage.SelectHobbies();
-
 
           /*  
             IWebElement elementSubjects = webDriver.FindElement(By.Id("subjectsInput"));
@@ -86,11 +80,5 @@ namespace AutomationProject.Tests
 
         }      
 
-        [TearDown]
-        public void TearDown()
-        {
-            // webDriver.Quit();
-            webDriver.Close();
-        }
     }
 }

@@ -1,23 +1,17 @@
+using AutomationProject.BasePage;
 using AutomationProject.HelperMethods;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace AutomationProject.Tests
 {
-    public class TextBoxTest
+    public class TextBoxTest : TestBasePage
     {
-
-        IWebDriver driver;
         ElementMethods elementMethods;
 
         [Test]
         public void TextBoxMethod()
         {
-            driver = new ChromeDriver();
-
-            driver.Navigate().GoToUrl("https://demoqa.com/");
-            driver.Manage().Window.Maximize();
-
             elementMethods = new ElementMethods(driver);
 
             IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
@@ -61,11 +55,5 @@ namespace AutomationProject.Tests
 
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-//            driver.Close();
-        }
     }
 }

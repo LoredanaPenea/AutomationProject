@@ -1,4 +1,5 @@
-﻿using AutomationProject.HelperMethods;
+﻿using AutomationProject.BasePage;
+using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -10,9 +11,8 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class WebTableTest
+    public class WebTableTest : TestBasePage
     {
-        IWebDriver webDriver;
         ElementMethods elementMethods;
         HomePage homePage;
         CommonPage commonPage;
@@ -21,17 +21,13 @@ namespace AutomationProject.Tests
         [Test]
         public void WebTableAddRecordsInTable()
         {
-            webDriver = new ChromeDriver();
-            webDriver.Navigate().GoToUrl("https://demoqa.com/");
-            webDriver.Manage().Window.Maximize();
-
-            elementMethods = new ElementMethods(webDriver);
-            homePage = new HomePage(webDriver);
-            commonPage = new CommonPage(webDriver);
-            webTablesPage = new WebTablesPage(webDriver);
+            elementMethods = new ElementMethods(driver);
+            homePage = new HomePage(driver);
+            commonPage = new CommonPage(driver);
+            webTablesPage = new WebTablesPage(driver);
 
 
-            IJavaScriptExecutor jsExec = (IJavaScriptExecutor)webDriver;
+            IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
             jsExec.ExecuteScript("window.scrollTo(0,1000)");
 
             homePage.ClickOnElementsCard();
@@ -65,13 +61,6 @@ namespace AutomationProject.Tests
 
              Console.WriteLine($"Last entry from Registration form is: {firstNameInTable}  {lastNameInTable}"); */
 
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            // webDriver.Quit();
-            webDriver.Close();
         }
     }
 
