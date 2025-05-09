@@ -25,18 +25,19 @@ namespace AutomationProject.Pages
         IWebElement smallModalBtn => webDriver.FindElement(By.Id("showSmallModal"));
         IWebElement largeModalBtn => webDriver.FindElement(By.Id("showLargeModal"));
         IWebElement closeSmallModal => webDriver.FindElement(By.Id("closeSmallModal"));
-        
+        IWebElement closeLargeModal => webDriver.FindElement(By.Id("closeLargeModal"));
+        By modalContent => By.ClassName("modal-content");
+
         public void ClickSmallModalBtn()
         {
             elementMethods.ClickOnElement(smallModalBtn);
-           // smallModalBtn.Click();
+           
         }
         public void CloseSmallModal()
         {
             
             WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(2));
-            //By modalContent = By.ClassName("modal-content");
-            wait.Until(ExpectedConditions.ElementIsVisible((By.ClassName("modal-content"))));
+            wait.Until(ExpectedConditions.ElementIsVisible(modalContent));
 
             elementMethods.ClickOnElement(closeSmallModal);
         }
@@ -48,9 +49,9 @@ namespace AutomationProject.Pages
         public void CloseLargeModal()
         {
             WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(2));
-            wait.Until(ExpectedConditions.ElementIsVisible((By.ClassName("modal-content"))));
+            wait.Until(ExpectedConditions.ElementIsVisible(modalContent));
 
-            webDriver.FindElement(By.Id("closeLargeModal")).Click();
+            elementMethods.ClickOnElement(closeLargeModal);
         }
     }
 }
