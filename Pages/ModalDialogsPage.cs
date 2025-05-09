@@ -15,11 +15,13 @@ namespace AutomationProject.Pages
         IWebDriver webDriver;
         ElementMethods elementMethods;
         JavaScriptMethods jsMethods;
+        WebDriverWait wait;
 
         public ModalDialogsPage(IWebDriver webDriver)
         {
             this.webDriver = webDriver;
             elementMethods = new ElementMethods(webDriver);
+            wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(2));
         }
 
         IWebElement smallModalBtn => webDriver.FindElement(By.Id("showSmallModal"));
@@ -35,8 +37,6 @@ namespace AutomationProject.Pages
         }
         public void CloseSmallModal()
         {
-            
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(modalContent));
 
             elementMethods.ClickOnElement(closeSmallModal);
@@ -48,7 +48,6 @@ namespace AutomationProject.Pages
 
         public void CloseLargeModal()
         {
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(modalContent));
 
             elementMethods.ClickOnElement(closeLargeModal);
