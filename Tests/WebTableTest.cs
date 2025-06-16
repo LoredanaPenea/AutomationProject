@@ -36,7 +36,7 @@ namespace AutomationProject.Tests
             commonPage.GoToMenu("Web Tables");
 
             webTablesPage.AddNewRecordInTable();
-            webTablesPage.FillRegistrationForm1(webTableData);
+            webTablesPage.FillRegistrationFormUsingXML(webTableData);
            // webTablesPage.FillRegistrationForm("Loredana", "Penea", "loredana.penea@email.com", "36", "5500", "IT");
             int rowIndex = webTablesPage.GetNumberOfRowsFromTable();
 

@@ -1,0 +1,14 @@
+﻿<dataSets>
+	<dataSet_1>
+		<FullName>Penea Loredana</FullName>
+		<Email>loredanapenea@email.com</Email>
+		<CurrentAddress>Strada Nicolae Balcescu</CurrentAddress>
+		<PermanentAddress>Strada Calea Bucuresti</PermanentAddress>
+	</dataSet_1>
+	<dataSet_2>
+		<FullName>Ionescu Alina</FullName>
+		<Email>ionescualina@test.com</Email>
+		<CurrentAddress>Strada Test nr. 123</CurrentAddress>
+		<PermanentAddress>Strada Stefan Barbu nr.44</PermanentAddress>
+	</dataSet_2>
+</dataSets>

@@ -37,7 +37,7 @@ namespace AutomationProject.Access
         private string GetValue (string nodeName)
         {
             return dataNode.Element(nodeName).Value;
-           // dataNode.Element(nodeName)?.Value ?? throw new Exception($"Node {nodeName} not found i XML file!");
+           // dataNode.Element(nodeName)?.Value ?? throw new Exception($"Node {nodeName} not found in XML file!");
         }
     }
 }

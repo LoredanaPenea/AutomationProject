@@ -33,7 +33,7 @@ namespace AutomationProject.Pages
             elementMethods.ClickOnElement(addBtnInWebTable);
         }
 
-        public void FillRegistrationForm1(WebTableData webTableData)
+        public void FillRegistrationFormUsingXML(WebTableData webTableData)
         {
             elementMethods.FillElement(firstNameField, webTableData.FirstName);
             elementMethods.FillElement(lastNameField, webTableData.LastName);
