@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class WidgetsTest : TestBasePage
+    public class WidgetsTest : BasePage.BasePage
     {
         ElementMethods elementMethods;
 

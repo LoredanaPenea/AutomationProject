@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class InteractionsDragDropTest : TestBasePage
+    public class InteractionsDragDropTest : BasePage.BasePage
     {
         ElementMethods elementMethods;
 

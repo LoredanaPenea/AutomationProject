@@ -5,7 +5,7 @@ using OpenQA.Selenium.Chrome;
 
 namespace AutomationProject.Tests
 {
-    public class TextBoxTest : TestBasePage
+    public class TextBoxTest : BasePage.BasePage
     {
         ElementMethods elementMethods;
 

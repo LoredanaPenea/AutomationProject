@@ -13,7 +13,7 @@ using AutomationProject.BasePage;
 
 namespace AutomationProject.Tests
 {
-    public class AlertsTest : TestBasePage
+    public class AlertsTest : BasePage.BasePage
     {
 
         ElementMethods elementMethods;

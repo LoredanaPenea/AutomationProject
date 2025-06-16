@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class PracticeFormTest : TestBasePage
+    public class PracticeFormTest : BasePage.BasePage
     {
         ElementMethods elementMethods;
         HomePage homePage;

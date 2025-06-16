@@ -11,7 +11,7 @@ using AutomationProject.BasePage;
 
 namespace AutomationProject.Tests
 {
-    public class SelectMenu :TestBasePage
+    public class SelectMenu : BasePage.BasePage
     {
         ElementMethods elementMethods;
 

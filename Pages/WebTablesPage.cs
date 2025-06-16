@@ -1,4 +1,5 @@
-﻿using AutomationProject.HelperMethods;
+﻿using AutomationProject.Access;
+using AutomationProject.HelperMethods;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,18 @@ namespace AutomationProject.Pages
         public void AddNewRecordInTable()
         {
             elementMethods.ClickOnElement(addBtnInWebTable);
+        }
+
+        public void FillRegistrationForm1(WebTableData webTableData)
+        {
+            elementMethods.FillElement(firstNameField, webTableData.FirstName);
+            elementMethods.FillElement(lastNameField, webTableData.LastName);
+            elementMethods.FillElement(emailField, webTableData.UserEmail);
+            elementMethods.FillElement(ageField, webTableData.Age);
+            elementMethods.FillElement(salaryField, webTableData.Salary);
+            elementMethods.FillElement(departmentField, webTableData.Department);
+
+            elementMethods.ClickOnElement(registrationSubmitBtn);
         }
         public void FillRegistrationForm(string firstName, string lastName, string email, string age, string salary, string department)
         {

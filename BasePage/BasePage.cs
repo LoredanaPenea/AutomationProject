@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationProject.BasePage.Browser;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,15 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.BasePage
 {
-    public class TestBasePage
+    public class BasePage
     {
-        public IWebDriver driver;
+        public WebDriver driver;
 
         [SetUp]
         public void InitializeBrowser()
         {
-            driver = new ChromeDriver();
+            driver = new BrowserFactory().GetBrowserFactory();
             driver.Navigate().GoToUrl("https://demoqa.com/");
-            driver.Manage().Window.Maximize();
         }
 
         [TearDown]

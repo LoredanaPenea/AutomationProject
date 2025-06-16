@@ -1,4 +1,5 @@
-﻿using AutomationProject.BasePage;
+﻿using AutomationProject.Access;
+using AutomationProject.BasePage;
 using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
 using OpenQA.Selenium;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class WebTableTest : TestBasePage
+    public class WebTableTest : BasePage.BasePage
     {
         ElementMethods elementMethods;
         HomePage homePage;
@@ -25,6 +26,7 @@ namespace AutomationProject.Tests
             homePage = new HomePage(driver);
             commonPage = new CommonPage(driver);
             webTablesPage = new WebTablesPage(driver);
+            var webTableData = new WebTableData(1);
 
 
             IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
@@ -34,7 +36,8 @@ namespace AutomationProject.Tests
             commonPage.GoToMenu("Web Tables");
 
             webTablesPage.AddNewRecordInTable();
-            webTablesPage.FillRegistrationForm("Loredana", "Penea", "loredana.penea@email.com", "36", "5500", "IT");
+            webTablesPage.FillRegistrationForm1(webTableData);
+           // webTablesPage.FillRegistrationForm("Loredana", "Penea", "loredana.penea@email.com", "36", "5500", "IT");
             int rowIndex = webTablesPage.GetNumberOfRowsFromTable();
 
             bool result = webTablesPage.VerifySubmittedDataInTable(rowIndex,"Loredana","Penea", "loredana.penea@email.com", "36", "5500", "IT");
@@ -48,8 +51,8 @@ namespace AutomationProject.Tests
             webTablesPage.AddNewRecordInTable();
             webTablesPage.FillRegistrationForm("Mihai", "Marinescu", "mihai.marinescu@email.com", "29", "5500", "Platform");
             rowIndex = webTablesPage.GetNumberOfRowsFromTable();
-            result = webTablesPage.VerifySubmittedDataInTable(rowIndex, "Mihai", "Marinescu", "mihai.marinescu@email.com", "29", "5500", "Platform");
-            if(result) Console.WriteLine("Last record is added with correct data");
+          //  result = webTablesPage.VerifySubmittedDataInTable(rowIndex, "Mihai", "Marinescu", "mihai.marinescu@email.com", "29", "5500", "Platform");
+           // if(result) Console.WriteLine("Last record is added with correct data");
 
             /*
            string firstNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "First Name");

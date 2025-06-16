@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class ProgressBarSlider : TestBasePage
+    public class ProgressBarSlider : BasePage.BasePage
     {
         ElementMethods elementMethods;
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class Windows : TestBasePage
+    public class Windows : BasePage.BasePage
     {
         ElementMethods elementMethods;
 
