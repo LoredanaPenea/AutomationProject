@@ -1,4 +1,5 @@
-﻿using AutomationProject.HelperMethods;
+﻿using AutomationProject.Access;
+using AutomationProject.HelperMethods;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,17 @@ namespace AutomationProject.Pages
             elementMethods.ClickOnElement(buttonSubmit);
         }
 
+        public void FillInTextBoxFormUsingXML(TextBoxData textBoxData)
+        {
+            elementMethods.FillElement(textBoxFullName, textBoxData.FullName);
+            elementMethods.FillElement(textBoxEmail, textBoxData.Email);
+            elementMethods.FillElement(textBoxCurrentAddress, textBoxData.CurrentAddress);
+            elementMethods.FillElement(textBoxPermanentAddress, textBoxData.PermanentAddress);
+
+            jsMethods.ScrollPageVertically(500);
+            elementMethods.ClickOnElement(buttonSubmit);
+        }
+
         public void VerifyTextBoxOutput(string fullName, string email, string currentAddress, string permanentAddress)
         {
             string actualName = outputFullName.Text.Substring(outputFullName.Text.IndexOf(':') + 1).Trim();
@@ -54,9 +66,11 @@ namespace AutomationProject.Pages
             Console.WriteLine($"actual email is>{actualEmail}");
             Console.WriteLine($"actual current address is>{actualCurrentAddress}");
             Console.WriteLine($"actual permanent address is>{actualPermanentAddress}");
-
+            
+        }
+        public void DisplayOutputData()
+        {
             Console.WriteLine($"Data you introduced is:\n{outputBox.Text}");
-         
         }
     }
 }

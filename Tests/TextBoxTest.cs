@@ -1,3 +1,4 @@
+using AutomationProject.Access;
 using AutomationProject.BasePage;
 using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
@@ -20,6 +21,7 @@ namespace AutomationProject.Tests
             homePage = new HomePage(driver);
             commonPage = new CommonPage(driver);
             textBoxPage = new TextBoxPage(driver);
+            var textBoxData = new TextBoxData(1);
 
             IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
             jsExec.ExecuteScript("window.scrollTo(0,1000)");
@@ -29,6 +31,9 @@ namespace AutomationProject.Tests
 
             textBoxPage.FillInTextBoxForm("Ionela Ionescu", "ionescuionela@test.com", "Street no.15 \n Craiova City", "Street no.15 bis\n Craiova City");
             textBoxPage.VerifyTextBoxOutput("Ionela Ionescu", "ionescuionela@test.com", "Street no.15 \n Craiova City", "Street no.15 bis\n Craiova City");
+
+            textBoxPage.FillInTextBoxFormUsingXML(textBoxData);
+            textBoxPage.DisplayOutputData();
 
             //Check Box - Elements menu item
             /*

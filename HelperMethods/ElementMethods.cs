@@ -23,6 +23,7 @@ namespace AutomationProject.HelperMethods
 
         public void FillElement(IWebElement element, string text)
         {
+            element.Clear();
             element.SendKeys(text);
         }
         
