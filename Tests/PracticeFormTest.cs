@@ -1,4 +1,5 @@
-﻿using AutomationProject.BasePage;
+﻿using AutomationProject.Access;
+using AutomationProject.BasePage;
 using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
 using OpenQA.Selenium;
@@ -26,6 +27,7 @@ namespace AutomationProject.Tests
             homePage = new HomePage(driver);
             commonPage = new CommonPage(driver);
             practiceFormPage = new PracticeFormPage(driver);
+            var practiceFormData = new PracticeFormData(2);
 
             IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
             jsExec.ExecuteScript("window.scrollTo(0,1000)");
@@ -34,11 +36,18 @@ namespace AutomationProject.Tests
 
             commonPage.GoToMenu("Practice Form");
 
-            //jsExec.ExecuteScript("window.scrollTo(0,1000)");
+            Console.WriteLine($"data in node is : {practiceFormData.FirstName} {practiceFormData.LastName}\n" +
+                $"{practiceFormData.Email} {practiceFormData.Gender} {practiceFormData.Phone}\n" + 
+                $"data nasterii:{practiceFormData.DateOfBirth} {practiceFormData.CurrentAddress} ");
 
+            practiceFormPage.FillPracticeFormUsingXML(practiceFormData);
+            practiceFormPage.VerifyDataForm();
+
+            /*
             practiceFormPage.CompleteFirstRegion("Ion", "Popa", "ionpopa@gmail.com","0987654321", "Strada Alexandru Macedonski nr.55");
             practiceFormPage.SelectGender("Male");
             practiceFormPage.SelectHobbies();
+            */
 
           /*  
             IWebElement elementSubjects = webDriver.FindElement(By.Id("subjectsInput"));

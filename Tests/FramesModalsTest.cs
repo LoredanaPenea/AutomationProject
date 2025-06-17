@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class FramesTest : BasePage.BasePage
+    public class FramesModalsTest : BasePage.BasePage
     {
         ElementMethods elementMethods;
         HomePage homePage;

@@ -1,0 +1,24 @@
+﻿<dataSets>
+	<dataSet_1>
+		<FirstName>Andreea</FirstName>
+		<LastName>Avram</LastName>
+		<Email>andreeaavram@test.com</Email>
+		<Gender>Female</Gender>
+		<Phone>0770123456</Phone>
+		<DateOfBirth>12 May 1990</DateOfBirth>
+		<Subjects>Commerce</Subjects>
+		<Hobbies>Sports,Music</Hobbies>
+		<CurrentAddress>Street no.78</CurrentAddress>
+	</dataSet_1>
+	<dataSet_2>
+		<FirstName>Andrei</FirstName>
+		<LastName>Avram</LastName>
+		<Email>andreiavram@test.com</Email>
+		<Gender>Male</Gender>
+		<Phone>0770123456</Phone>
+		<DateOfBirth>12 May 1990</DateOfBirth>
+		<Subjects>Commerce</Subjects>
+		<Hobbies>Sports,Dancing</Hobbies>
+		<CurrentAddress>Street no.88 bis</CurrentAddress>
+	</dataSet_2>
+</dataSets>
