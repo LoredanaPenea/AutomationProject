@@ -27,6 +27,14 @@ namespace AutomationProject.HelperMethods
             element.SendKeys(text);
         }
         
+        public void TypeTextInDropDown(IWebElement element, string text)
+        {
+            element.SendKeys(text);
+        }
+        public void PressEnter(IWebElement element)
+        {
+            element.SendKeys(Keys.Enter);
+        }
         public void SelectElementFromListByText(IList<IWebElement> elementsList, string text)
         {
             foreach (IWebElement element in elementsList)

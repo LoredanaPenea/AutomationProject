@@ -39,6 +39,8 @@ namespace AutomationProject.Pages
         IWebElement sportsCheckBox => webDriver.FindElement(By.XPath("//label[@for='hobbies-checkbox-1']"));
         IWebElement readingCheckBox => webDriver.FindElement(By.XPath("//label[@for='hobbies-checkbox-2']"));
         IWebElement musicCheckBox => webDriver.FindElement(By.XPath("//label[@for='hobbies-checkbox-3']"));
+
+        IWebElement elementSubjects => webDriver.FindElement(By.Id("subjectsInput"));
         IWebElement submitBtn => webDriver.FindElement(By.Id("submit"));
         By modalContent => By.ClassName("modal-content");
 
@@ -64,6 +66,7 @@ namespace AutomationProject.Pages
 
             //Hobbies
             jsMethods.ScrollPageVertically(500);
+            AddSubjects(practiceFormData.Subjects);
             SelectHobbiesUsingXML(practiceFormData.Hobbies);
             elementMethods.FillElement(currentAddressElement, practiceFormData.CurrentAddress);
         }
@@ -173,9 +176,16 @@ namespace AutomationProject.Pages
                     if(hobbyCheckBox.Text.Equals(hobby)) elementMethods.ClickOnElement(hobbyCheckBox);
         }
 
-        public void AddSubjects()
+        public void AddSubjects(string subjects)
         {
-
+            List<string> subjectsList = subjects.Split(',')
+                                .Select(s => s.Trim())
+                                .ToList();
+            foreach (string subject in subjectsList)
+            {
+                elementMethods.TypeTextInDropDown(elementSubjects, subject);
+                elementMethods.PressEnter(elementSubjects);
+            }
         }
     }
 
