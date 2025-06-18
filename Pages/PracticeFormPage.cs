@@ -1,5 +1,6 @@
 ﻿using AutomationProject.Access;
 using AutomationProject.HelperMethods;
+using NUnit.Framework.Constraints;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -35,12 +36,17 @@ namespace AutomationProject.Pages
         IWebElement genderMaleRadioButton => webDriver.FindElement(By.XPath("//label[@for='gender-radio-1']"));
         IWebElement genderFemaleRadioButton => webDriver.FindElement(By.XPath("//label[@for='gender-radio-2']"));
         IWebElement genderOtherRadioButton => webDriver.FindElement(By.XPath("//label[@for='gender-radio-3']"));
-
+        IWebElement dateOfBirth => webDriver.FindElement(By.Id("dateOfBirthInput"));
+        IWebElement datePickerMonth => webDriver.FindElement(By.XPath("//select[@class='react-datepicker__month-select']"));
+        IWebElement datePickerYear => webDriver.FindElement(By.XPath("//select[@class='react-datepicker__year-select']"));
         IWebElement sportsCheckBox => webDriver.FindElement(By.XPath("//label[@for='hobbies-checkbox-1']"));
         IWebElement readingCheckBox => webDriver.FindElement(By.XPath("//label[@for='hobbies-checkbox-2']"));
         IWebElement musicCheckBox => webDriver.FindElement(By.XPath("//label[@for='hobbies-checkbox-3']"));
 
         IWebElement elementSubjects => webDriver.FindElement(By.Id("subjectsInput"));
+        IWebElement uploadPictureBtn => webDriver.FindElement(By.Id("uploadPicture"));
+        IWebElement selectStateDropDown => webDriver.FindElement(By.Id("state"));
+        IWebElement selectCityDropDown => webDriver.FindElement(By.Id("city"));
         IWebElement submitBtn => webDriver.FindElement(By.Id("submit"));
         By modalContent => By.ClassName("modal-content");
 
@@ -60,37 +66,33 @@ namespace AutomationProject.Pages
             elementMethods.FillElement(emailElement, practiceFormData.Email);
             SelectGender(practiceFormData.Gender);
             elementMethods.FillElement(mobilePhoneElement, practiceFormData.Phone);
-            //date of birth
-
+            //Date of birth
+            SetDateOfBirth(practiceFormData.DateOfBirth);
+           // CompleteDate(practiceFormData);
             //Subjects
-
-            //Hobbies
             jsMethods.ScrollPageVertically(500);
             AddSubjects(practiceFormData.Subjects);
+            //Hobbies
             SelectHobbiesUsingXML(practiceFormData.Hobbies);
+            //Picture
+
             elementMethods.FillElement(currentAddressElement, practiceFormData.CurrentAddress);
+            //State and City
+            SelectState(practiceFormData.State);
+            SelectCity(practiceFormData.City);
         }
-        /*
-        public void SubmitData()
-        {
-            string borderColor;
-
-            borderColor = firstNameElement.GetCssValue("border-color");
-
-           if(borderColor.Contains("rgb(") || borderColor.Contains("!"))
-                Console.WriteLine("First Name is Empty");
-
-            borderColor = lastNameElement.GetCssValue("border-color");
-           
-            elementMethods.ClickOnElement(submitBtn);
-        }
-        */
-        public void VerifyDataForm()
+       
+        public void VerifyDataForm(PracticeFormData practiceFormData)
         {
             jsMethods.ScrollPageVertically(1000);
             elementMethods.ClickOnElement(submitBtn);
-            //wait.Until(ExpectedConditions.ElementIsVisible(modalContent));
+            
             var modalData = GetConfirmationModalData();
+
+            if (practiceFormData.FirstName ==null) Console.WriteLine("Please provide First Name");
+            if (practiceFormData.LastName == null) Console.WriteLine("Please provide Last Name");
+            if(practiceFormData.Phone == null) Console.WriteLine("Please provide mobile phone number");
+            if(practiceFormData.Gender == null) Console.WriteLine("Please select a gender");
 
             Console.WriteLine("Student Name: " + modalData["Student Name"]);
             if (string.IsNullOrEmpty(modalData["Student Email"]))
@@ -101,10 +103,10 @@ namespace AutomationProject.Pages
             Console.WriteLine("Gender: " + modalData["Gender"]);
             Console.WriteLine("Mobile Phone: " + modalData["Mobile"]);
             Console.WriteLine("Date Of Birth: " + modalData["Date of Birth"]);
-            //DateTime dob = DateTime.ParseExact(modalData["Date of Birth"], "dd MMMM,yyyy", CultureInfo.InvariantCulture);
             Console.WriteLine("Subjects: " + modalData["Subjects"]);
             Console.WriteLine("Hobbies: " + modalData["Hobbies"]);
             Console.WriteLine("Current Address: " + modalData["Address"]);
+            Console.WriteLine("State and City: " + modalData["State and City"]);
 
         }
 
@@ -129,6 +131,41 @@ namespace AutomationProject.Pages
 
             return modalData;
         }
+
+        public void SetDateOfBirth(DateTime date)
+        { 
+            string formattedDoB = date.ToString("dd MMM yyyy", CultureInfo.InvariantCulture);
+            elementMethods.ClickOnElement(dateOfBirth);
+            elementMethods.SelectAll(dateOfBirth);
+            //elementMethods.FillElement(dateOfBirth,formattedDoB);
+            elementMethods.TypeTextInDropDown(dateOfBirth, formattedDoB);
+            elementMethods.PressEnter(dateOfBirth);
+           
+        }
+        public void FillDateOfBirth(DateTime date)
+        {
+            Console.WriteLine($"date from practice form var is: {date}");
+            elementMethods.ClickOnElement(dateOfBirth);
+            elementMethods.SelectByText(datePickerMonth, date.Month.ToString());
+            elementMethods.SelectByText(datePickerYear, date.Year.ToString());
+            var day = webDriver.FindElement(By.XPath($"//*[@class='react-datepicker__day react-datepicker__day--0{date.Day}' and not (contains(@class, '--outside-month'))]"));
+
+
+            elementMethods.SelectByValue(day, date.Day.ToString());
+
+        }
+        /*
+        public void CompleteDate(PracticeFormData practiceFormData)
+        {
+
+            var dateTime = elementMethods.FormatDate(practiceFormData.DateOfBirth);
+
+            elementMethods.ClickOnElement(dateOfBirth);
+            elementMethods.SelectByText(datePickerMonth, dateTime.ToString("MMMM"));
+            elementMethods.SelectByText(datePickerYear, dateTime.Year.ToString());
+            var correctDay = webDriver.FindElement(By.XPath($"//*[@class='react-datepicker__day react-datepicker__day--0{dateTime.Day}' and not (contains(@class, '--outside-month'))]"));
+            correctDay.Click();
+        } */
         public void SelectGender(string gender)
         {
             switch (gender)
@@ -174,6 +211,9 @@ namespace AutomationProject.Pages
             foreach (IWebElement hobbyCheckBox in hobbiesCheckBoxList)
                 foreach (string hobby in hobbyList)
                     if(hobbyCheckBox.Text.Equals(hobby)) elementMethods.ClickOnElement(hobbyCheckBox);
+            
+            //foreach (string hobby in hobbyList)
+             //   elementMethods.SelectElementFromListByText(hobbiesCheckBoxList, hobby);
         }
 
         public void AddSubjects(string subjects)
@@ -186,6 +226,23 @@ namespace AutomationProject.Pages
                 elementMethods.TypeTextInDropDown(elementSubjects, subject);
                 elementMethods.PressEnter(elementSubjects);
             }
+        }
+
+        public void SelectState(string state)
+        {
+            elementMethods.ClickOnElement(selectStateDropDown);
+            List<string> statesList = new List<string> { "NCR", "Uttar Pradesh", "Haryana", "Rajasthan" };
+
+            foreach (string stateValue in statesList)
+                if (stateValue.Equals(state)) elementMethods.SelectValueFromDropDown(state);
+           // elementMethods.SelectValueFromDropDown(state);
+
+
+        }
+        public void SelectCity(string city)
+        {
+            elementMethods.ClickOnElement(selectCityDropDown);
+            elementMethods.SelectValueFromDropDown(city);
         }
     }
 

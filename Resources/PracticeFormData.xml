@@ -16,9 +16,24 @@
 		<Email>andreiavram@test.com</Email>
 		<Gender>Male</Gender>
 		<Phone>0770123456</Phone>
-		<DateOfBirth>12 May 1990</DateOfBirth>
-		<Subjects>Commerce</Subjects>
+		<DateOfBirth>21 feb 1992</DateOfBirth>
+		<Subjects>Commerce,Computer Science,Economics</Subjects>
 		<Hobbies>Sports,Dancing</Hobbies>
 		<CurrentAddress>Street no.88 bis</CurrentAddress>
+		<State>Haryana</State>
+		<City>Karnal</City>
 	</dataSet_2>
+	<dataSet_3>
+		<FirstName>Andrei</FirstName>
+		<LastName>Avram</LastName>
+		<Email>andreiavram@test.com</Email>
+		<Gender>Male</Gender>
+		<Phone>0770123456</Phone>
+		<DateOfBirth>1,0,0</DateOfBirth>
+		<Subjects>Commerce,Computer Science,Economics</Subjects>
+		<Hobbies>Sports,Dancing</Hobbies>
+		<CurrentAddress>Street no.88 bis</CurrentAddress>
+		<State>Haryana</State>
+		<City>Karnal</City>
+	</dataSet_3>
 </dataSets>

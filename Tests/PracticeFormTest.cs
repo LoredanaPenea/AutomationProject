@@ -50,28 +50,7 @@ namespace AutomationProject.Tests
             */
 
           /*  
-            IWebElement elementSubjects = webDriver.FindElement(By.Id("subjectsInput"));
-            elementMethods.FillElement(elementSubjects, "English");
-            elementMethods.FillElement(elementSubjects, Keys.Enter);
-            elementMethods.FillElement(elementSubjects, "C");
-            elementMethods.FillElement(elementSubjects, Keys.ArrowDown);
-            elementMethods.FillElement(elementSubjects, Keys.ArrowDown);
-            elementMethods.FillElement(elementSubjects, Keys.ArrowDown);
-            elementMethods.FillElement(elementSubjects, Keys.Enter);
-
-            List<IWebElement> listRemoveSubjects = webDriver.FindElements(By.XPath("//div[@class='css-xb97g8 subjects-auto-complete__multi-value__remove']")).ToList();
-            bool subjectFlag = true;
-
-            //the site will break if we remove all the elements in the list 
-            //while (subjectFlag)
-            //{
-            //    foreach (IWebElement elementSubject in listRemoveSubjects)
-            //        elementSubject.Click();
-            //    subjectFlag = false;
-            //}    
-
             //Date Picker
-
             IWebElement dateBirth = webDriver.FindElement(By.Id("dateOfBirthInput"));
             elementMethods.ClickOnElement(dateBirth);
 

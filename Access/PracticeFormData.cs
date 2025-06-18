@@ -20,19 +20,26 @@ namespace AutomationProject.Access
             Gender = GetValue("Gender");
             Phone = GetValue("Phone");
             //date of birth
-            string DateOfBirthString = GetValue("DateOfBirth");
+            //DateOfBirth = GetValue("DateOfBirth");
+           string DateOfBirthString = GetValue("DateOfBirth");
+
             if (!string.IsNullOrWhiteSpace(DateOfBirthString) &&
                  DateTime.TryParseExact(DateOfBirthString, "dd MMM yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
                 DateOfBirth = parsedDate;
             else
+            {
                 // Optionally handle missing DOB
-                DateOfBirth = DateTime.MinValue;
+                Console.WriteLine("Date of Birth invalid or missing");
+                DateOfBirth = DateTime.Now;
+            }
+          
             //Subjects
             Subjects = GetValue("Subjects");
             //Hobbies
             Hobbies = GetValue("Hobbies");
-
             CurrentAddress = GetValue("CurrentAddress");
+            State = GetValue("State");
+            City = GetValue("City");
         }
 
         private string GetValue(string nodeName)

@@ -13,12 +13,18 @@ namespace AutomationProject.Access
         public string Email { get; set; }   
         public string Gender {  get; set; }
         public string Phone { get; set; }
-        public DateTime DateOfBirth { get; set; }
+
+       //public string DateOfBirth { get; set; }
+       public DateTime DateOfBirth { get; set; }
+
        // public List<string> Subjects { get; set; }
         public string Subjects;
+
       // public List<string> Hobbies { get; set; }
         public string Hobbies { get; set; }
         public string CurrentAddress { get; set; }
+        public string State {  get; set; }
+        public string City { get; set; }
 
     }
 }
