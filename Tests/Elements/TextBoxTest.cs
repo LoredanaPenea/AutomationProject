@@ -2,10 +2,11 @@ using AutomationProject.Access;
 using AutomationProject.BasePage;
 using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
+using AutomationProject.Pages.Elements;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace AutomationProject.Tests
+namespace AutomationProject.Tests.Elements
 {
     public class TextBoxTest : BasePage.BasePage
     {

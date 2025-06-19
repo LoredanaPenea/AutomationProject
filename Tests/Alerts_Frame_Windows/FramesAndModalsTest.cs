@@ -1,6 +1,7 @@
 ﻿using AutomationProject.BasePage;
 using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
+using AutomationProject.Pages.Alerts_Frame_Windows;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutomationProject.Tests
+namespace AutomationProject.Tests.Alerts_Frame_Windows
 {
     public class FramesAndModalsTest : BasePage.BasePage
     {

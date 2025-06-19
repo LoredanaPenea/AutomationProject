@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutomationProject.Pages
+namespace AutomationProject.Pages.Alerts_Frame_Windows
 {
     public class WindowsPage
     {
@@ -17,7 +17,7 @@ namespace AutomationProject.Pages
         public WindowsMethods windowsMethods;
         public WindowsPage(IWebDriver webDriver)
         {
-            this.driver = webDriver;
+            driver = webDriver;
             elementMethods = new ElementMethods(webDriver);
             jsMethods = new JavaScriptMethods(webDriver);
             windowsMethods = new WindowsMethods(webDriver);

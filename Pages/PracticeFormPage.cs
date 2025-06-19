@@ -138,7 +138,7 @@ namespace AutomationProject.Pages
             elementMethods.ClickOnElement(dateOfBirth);
             elementMethods.SelectAll(dateOfBirth);
             //elementMethods.FillElement(dateOfBirth,formattedDoB);
-            elementMethods.TypeTextInDropDown(dateOfBirth, formattedDoB);
+            elementMethods.TypeTextInWebElement(dateOfBirth, formattedDoB);
             elementMethods.PressEnter(dateOfBirth);
            
         }
@@ -223,7 +223,7 @@ namespace AutomationProject.Pages
                                 .ToList();
             foreach (string subject in subjectsList)
             {
-                elementMethods.TypeTextInDropDown(elementSubjects, subject);
+                elementMethods.TypeTextInWebElement(elementSubjects, subject);
                 elementMethods.PressEnter(elementSubjects);
             }
         }
@@ -234,7 +234,7 @@ namespace AutomationProject.Pages
             List<string> statesList = new List<string> { "NCR", "Uttar Pradesh", "Haryana", "Rajasthan" };
 
             foreach (string stateValue in statesList)
-                if (stateValue.Equals(state)) elementMethods.SelectValueFromDropDown(state);
+                if (stateValue.Equals(state)) elementMethods.SelectValueFromDynamicDropDown(state);
            // elementMethods.SelectValueFromDropDown(state);
 
 
@@ -242,7 +242,7 @@ namespace AutomationProject.Pages
         public void SelectCity(string city)
         {
             elementMethods.ClickOnElement(selectCityDropDown);
-            elementMethods.SelectValueFromDropDown(city);
+            elementMethods.SelectValueFromDynamicDropDown(city);
         }
     }
 

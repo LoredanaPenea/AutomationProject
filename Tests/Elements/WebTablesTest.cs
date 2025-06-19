@@ -2,6 +2,7 @@
 using AutomationProject.BasePage;
 using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
+using AutomationProject.Pages.Elements;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -10,11 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutomationProject.Tests
+namespace AutomationProject.Tests.Elements
 {
-    public class WebTableTest : BasePage.BasePage
+    public class WebTablesTest : BasePage.BasePage
     {
-        ElementMethods elementMethods;
         HomePage homePage;
         CommonPage commonPage;
         WebTablesPage webTablesPage;
@@ -22,15 +22,10 @@ namespace AutomationProject.Tests
         [Test]
         public void WebTableAddRecordsInTable()
         {
-            elementMethods = new ElementMethods(driver);
             homePage = new HomePage(driver);
             commonPage = new CommonPage(driver);
             webTablesPage = new WebTablesPage(driver);
             var webTableData = new WebTableData(1);
-
-
-            IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
-            jsExec.ExecuteScript("window.scrollTo(0,1000)");
 
             homePage.ClickOnElementsCard();
             commonPage.GoToMenu("Web Tables");
@@ -53,16 +48,6 @@ namespace AutomationProject.Tests
             rowIndex = webTablesPage.GetNumberOfRowsFromTable();
           //  result = webTablesPage.VerifySubmittedDataInTable(rowIndex, "Mihai", "Marinescu", "mihai.marinescu@email.com", "29", "5500", "Platform");
            // if(result) Console.WriteLine("Last record is added with correct data");
-
-            /*
-           string firstNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "First Name");
-           string lastNameInTable = webTablesPage.GetColumnFromRow(rowIndex, "Last Name");
-           string emailInTable = webTablesPage.GetColumnFromRow(rowIndex, "Email");
-           string ageInTable = webTablesPage.GetColumnFromRow(rowIndex, "Age");
-           string salaryInTable = webTablesPage.GetColumnFromRow(rowIndex, "Salary");
-           string departamentInTable = webTablesPage.GetColumnFromRow(rowIndex, "Department");
-
-             Console.WriteLine($"Last entry from Registration form is: {firstNameInTable}  {lastNameInTable}"); */
 
         }
     }

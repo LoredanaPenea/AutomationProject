@@ -29,9 +29,6 @@ namespace AutomationProject.Tests
             practiceFormPage = new PracticeFormPage(driver);
             var practiceFormData = new PracticeFormData(2);
 
-            IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
-            jsExec.ExecuteScript("window.scrollTo(0,1000)");
-
             homePage.ClickOnFormsCard();
 
             commonPage.GoToMenu("Practice Form");

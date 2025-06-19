@@ -1,0 +1,16 @@
+﻿<dataSets>
+	<dataSet_1>
+		<SelectOption>Group 1, option 2</SelectOption>
+		<SelectTitle>Mrs.</SelectTitle>
+		<OldStyleSelectMenu>Indigo</OldStyleSelectMenu>
+		<MultiselectDropDown>Green,Blue</MultiselectDropDown>
+		<StandardMultiselect>opel,Audi</StandardMultiselect>
+	</dataSet_1>
+	<dataSet_2>
+		<SelectOption>Group 1, option 2</SelectOption>
+		<SelectTitle>Mrs.</SelectTitle>
+		<OldStyleSelectMenu>Indigo</OldStyleSelectMenu>
+		<MultiselectDropDown></MultiselectDropDown>
+		<StandardMultiselect>opel,Audi</StandardMultiselect>
+	</dataSet_2>
+</dataSets>

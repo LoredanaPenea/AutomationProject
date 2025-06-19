@@ -10,8 +10,9 @@ using SeleniumExtras.WaitHelpers;
 using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
 using AutomationProject.BasePage;
+using AutomationProject.Pages.Alerts_Frame_Windows;
 
-namespace AutomationProject.Tests
+namespace AutomationProject.Tests.Alerts_Frame_Windows
 {
     public class AlertsTest : BasePage.BasePage
     {

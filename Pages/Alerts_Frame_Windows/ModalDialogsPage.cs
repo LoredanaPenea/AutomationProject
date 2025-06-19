@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutomationProject.Pages
+namespace AutomationProject.Pages.Alerts_Frame_Windows
 {
     public class ModalDialogsPage
     {
