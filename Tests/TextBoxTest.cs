@@ -13,6 +13,7 @@ namespace AutomationProject.Tests
         HomePage homePage;
         CommonPage commonPage;
         TextBoxPage textBoxPage;
+        JavaScriptMethods jsMethods;
 
         [Test]
         public void TextBoxMethod()
@@ -23,8 +24,8 @@ namespace AutomationProject.Tests
             textBoxPage = new TextBoxPage(driver);
             var textBoxData = new TextBoxData(1);
 
-            IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;
-            jsExec.ExecuteScript("window.scrollTo(0,1000)");
+            jsMethods = new JavaScriptMethods(driver);
+            jsMethods.ScrollPageVertically(800);
 
             homePage.ClickOnElementsCard();
             commonPage.GoToMenu("Text Box");
@@ -34,23 +35,6 @@ namespace AutomationProject.Tests
 
             textBoxPage.FillInTextBoxFormUsingXML(textBoxData);
             textBoxPage.DisplayOutputData();
-
-            //Check Box - Elements menu item
-            /*
-            IWebElement elementCheckBoxButon = driver.FindElement(By.XPath("//span[text()='Check Box']"));
-            elementMethods.ClickOnElement(elementCheckBoxButon);
-
-            IWebElement checkBoxExpandCollapse = driver.FindElement(By.XPath("//*[@id=\"tree-node\"]/ol/li/span/button"));
-            jsExec.ExecuteScript("window.scrollTo(0,1000)");
-            elementMethods.ClickOnElement(checkBoxExpandCollapse);
-
-            IWebElement checkBoxDesktop = driver.FindElement(By.XPath("//*[@id=\"tree-node\"]/ol/li/ol/li[1]/span/label/span[1]"));
-            elementMethods.ClickOnElement(checkBoxDesktop);
-            bool checkBoxDesktopSelection = checkBoxDesktop.GetCssValue("svg").Contains("rct-icon rct-icon-uncheck");
-            if (checkBoxDesktopSelection)
-                Console.WriteLine("Check Box is not checked");
-            else Console.WriteLine("Check Box is checked");
-            */
 
         }
 

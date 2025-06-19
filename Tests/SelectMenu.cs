@@ -18,6 +18,7 @@ namespace AutomationProject.Tests
         [Test]
         public void SelectMenuTest()
         {
+            //using XML data
             elementMethods = new ElementMethods(driver);
 
             IJavaScriptExecutor jsExec = (IJavaScriptExecutor)driver;

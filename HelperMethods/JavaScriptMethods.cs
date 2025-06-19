@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,10 @@ namespace AutomationProject.HelperMethods
         public void ScrollPageDynamically(int pixelX, int pixelY)
         {
             jsExec.ExecuteScript($"window.scrollTo({pixelX}, {pixelY} )");
+        }
+        public void ScrollElementIntoView(IWebElement element)
+        {
+            jsExec.ExecuteScript("arguments[0].scrollIntoView(arguments[1]);",element);
         }
     }
 }

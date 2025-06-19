@@ -3,7 +3,6 @@ using AutomationProject.HelperMethods;
 using AutomationProject.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,26 +11,34 @@ using System.Threading.Tasks;
 
 namespace AutomationProject.Tests
 {
-    public class InteractionsDragDropTest : BasePage.BasePage
+    public class WindowsTest : BasePage.BasePage
     {
         ElementMethods elementMethods;
+        JavaScriptMethods jsMethods;
         HomePage homePage;
         CommonPage commonPage;
-        DroppablePage droppablePage;
+        WindowsPage windowsPage;
+
 
         [Test]
-        public void DragAndDropTest()
+        public void WindowsInteractions()
         {
-
             elementMethods = new ElementMethods(driver);
+
+            jsMethods = new JavaScriptMethods(driver);
+            jsMethods.ScrollPageVertically(1000);
+
             homePage = new HomePage(driver);
             commonPage = new CommonPage(driver);
-            droppablePage = new DroppablePage(driver);
+            windowsPage = new WindowsPage(driver);
 
-            homePage.ClickOnInteractionsCard();
-            commonPage.GoToMenu("Droppable");
-            droppablePage.DragAndDrop();
-
+            homePage.ClickOnAlertsFrameCard();
+            commonPage.GoToMenu("Browser Windows");
+            
+            windowsPage.ClickNewTab();
+            windowsPage.ClickNewWindow();
+            
         }
+
     }
 }

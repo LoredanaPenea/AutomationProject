@@ -25,7 +25,6 @@ namespace AutomationProject.Pages
         }
 
         IWebElement alertButton => webDriver.FindElement(By.Id("alertButton"));
-
         IWebElement alertTimerButton=> webDriver.FindElement(By.Id("timerAlertButton"));
         IWebElement confirmButton => webDriver.FindElement(By.Id("confirmButton"));
         IWebElement promptButton => webDriver.FindElement(By.Id("promtButton"));

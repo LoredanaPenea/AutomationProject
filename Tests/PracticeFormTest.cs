@@ -41,7 +41,7 @@ namespace AutomationProject.Tests
                 $"data nasterii:{practiceFormData.DateOfBirth} {practiceFormData.CurrentAddress} ");
 
             practiceFormPage.FillPracticeFormUsingXML(practiceFormData);
-            practiceFormPage.VerifyDataForm();
+            practiceFormPage.VerifyDataForm(practiceFormData);
 
             /*
             practiceFormPage.CompleteFirstRegion("Ion", "Popa", "ionpopa@gmail.com","0987654321", "Strada Alexandru Macedonski nr.55");
