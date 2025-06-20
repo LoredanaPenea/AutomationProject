@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutomationProject.Pages
+namespace AutomationProject.Pages.Interactions
 {
     public class DroppablePage
     {

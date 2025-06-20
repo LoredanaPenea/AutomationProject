@@ -10,8 +10,9 @@ using static System.Net.Mime.MediaTypeNames;
 using AutomationProject.HelperMethods;
 using AutomationProject.BasePage;
 using AutomationProject.Pages;
+using AutomationProject.Pages.Interactions;
 
-namespace AutomationProject.Tests
+namespace AutomationProject.Tests.Interactions
 {
     public class InteractionsTest : BasePage.BasePage
     {
