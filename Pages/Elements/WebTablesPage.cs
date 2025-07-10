@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace AutomationProject.Pages.Elements
 {
@@ -27,6 +28,7 @@ namespace AutomationProject.Pages.Elements
         IWebElement salaryField => webDriver.FindElement(By.Id("salary"));
         IWebElement departmentField => webDriver.FindElement(By.Id("department"));
         IWebElement registrationSubmitBtn => webDriver.FindElement(By.Id("submit"));
+        
 
         public void AddNewRecordInTable()
         {
@@ -44,6 +46,26 @@ namespace AutomationProject.Pages.Elements
 
             elementMethods.ClickOnElement(registrationSubmitBtn);
         }
+        public void VerifyDataFromTable(int rowIndex, WebTableData webTableData)
+        {
+            var rows = webDriver.FindElements(By.CssSelector("div.rt-tbody div[role='row']"));
+            IWebElement row = rows[rowIndex-1];
+            var cells = row.FindElements(By.CssSelector("div[role='gridcell']"))
+               .Select(c => c.Text.Trim())
+               .ToList();
+         
+            Assert.Multiple(() =>
+            {
+                Assert.That(cells[0], Is.EqualTo(webTableData.FirstName), "First name");
+                Assert.That(cells[1], Is.EqualTo(webTableData.LastName), "Last name");
+                Assert.That(cells[2], Is.EqualTo(webTableData.Age.ToString()), "Age");
+                Assert.That(cells[3], Is.EqualTo(webTableData.UserEmail), "Email");
+                Assert.That(cells[4], Is.EqualTo(webTableData.Salary.ToString()), "Salary");
+                Assert.That(cells[5], Is.EqualTo(webTableData.Department), "Department");
+            });
+
+        }
+        /*
         public void FillRegistrationForm(string firstName, string lastName, string email, string age, string salary, string department)
         {
             elementMethods.FillElement(firstNameField, firstName);
@@ -54,7 +76,7 @@ namespace AutomationProject.Pages.Elements
             elementMethods.FillElement(departmentField, department);
 
             elementMethods.ClickOnElement(registrationSubmitBtn);
-        }
+        }  */
 
         public int GetNumberOfRowsFromTable()
         {

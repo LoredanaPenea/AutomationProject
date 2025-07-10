@@ -34,14 +34,6 @@ namespace AutomationProject.Pages.Interactions
 
             // Move the element in different directions using Actions class instance
             actionsMethods.DragRightAndDownByOffsets(200,100,dragBox);
-            /*
-            actions.ClickAndHold(dragBox)
-                       .MoveByOffset(200, 0) // Move right
-                       .Pause(TimeSpan.FromSeconds(1)) // Pause for visualization
-                       .MoveByOffset(0, 100) // Move down 
-                       .Release()
-                       .Click()
-                       .Perform();*/
 
             IWebElement notGreedyDropBox = webDriver.FindElement(By.Id("notGreedyDropBox"));
             IWebElement notGreedyInnerDropBox = webDriver.FindElement(By.Id("notGreedyInnerDropBox"));
@@ -64,13 +56,6 @@ namespace AutomationProject.Pages.Interactions
             jsMethods.ScrollElementIntoView(dragBox);
 
             actionsMethods.DragRightAndDownByOffsets(100,300,dragBox);
-           /* actions.ClickAndHold(dragBox)
-                   .MoveByOffset(0, 300) // Move down 
-                   .Pause(TimeSpan.FromSeconds(1)) // Pause for visualization
-                   .MoveByOffset(100, 0) // Move right
-                   .Release()
-                   .Click()
-                   .Perform(); */
 
             IWebElement greedyDropbox = webDriver.FindElement(By.Id("greedyDropBox"));
             IWebElement greedyInnerDropbox = webDriver.FindElement(By.Id("greedyDropBoxInner"));

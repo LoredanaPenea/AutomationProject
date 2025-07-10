@@ -28,18 +28,6 @@ namespace AutomationProject.Tests.Elements
             commonPage.GoToMenu("Check Box");
             checkBoxPage.ExpandCheckBoxMenu();
 
-            /*
-            IWebElement checkBoxExpandCollapse = driver.FindElement(By.XPath("//*[@id=\"tree-node\"]/ol/li/span/button"));
-            jsExec.ExecuteScript("window.scrollTo(0,1000)");
-            elementMethods.ClickOnElement(checkBoxExpandCollapse);
-
-            IWebElement checkBoxDesktop = driver.FindElement(By.XPath("//*[@id=\"tree-node\"]/ol/li/ol/li[1]/span/label/span[1]"));
-            elementMethods.ClickOnElement(checkBoxDesktop);
-            bool checkBoxDesktopSelection = checkBoxDesktop.GetCssValue("svg").Contains("rct-icon rct-icon-uncheck");
-            if (checkBoxDesktopSelection)
-                Console.WriteLine("Check Box is not checked");
-            else Console.WriteLine("Check Box is checked");
-            */
 
         }
     }

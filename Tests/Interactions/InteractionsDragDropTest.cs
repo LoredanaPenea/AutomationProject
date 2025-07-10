@@ -23,7 +23,6 @@ namespace AutomationProject.Tests.Interactions
         [Test]
         public void DragAndDropTest()
         {
-
             elementMethods = new ElementMethods(driver);
             homePage = new HomePage(driver);
             commonPage = new CommonPage(driver);

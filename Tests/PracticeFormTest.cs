@@ -40,11 +40,6 @@ namespace AutomationProject.Tests
             practiceFormPage.FillPracticeFormUsingXML(practiceFormData);
             practiceFormPage.VerifyDataForm(practiceFormData);
 
-            /*
-            practiceFormPage.CompleteFirstRegion("Ion", "Popa", "ionpopa@gmail.com","0987654321", "Strada Alexandru Macedonski nr.55");
-            practiceFormPage.SelectGender("Male");
-            practiceFormPage.SelectHobbies();
-            */
 
           /*  
             //Date Picker

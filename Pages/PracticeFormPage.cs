@@ -150,14 +150,12 @@ namespace AutomationProject.Pages
             elementMethods.SelectByText(datePickerYear, date.Year.ToString());
             var day = webDriver.FindElement(By.XPath($"//*[@class='react-datepicker__day react-datepicker__day--0{date.Day}' and not (contains(@class, '--outside-month'))]"));
 
-
             elementMethods.SelectByValue(day, date.Day.ToString());
 
         }
         /*
         public void CompleteDate(PracticeFormData practiceFormData)
         {
-
             var dateTime = elementMethods.FormatDate(practiceFormData.DateOfBirth);
 
             elementMethods.ClickOnElement(dateOfBirth);
@@ -181,7 +179,7 @@ namespace AutomationProject.Pages
                     break;
             }
         }
-
+        /*
         public void SelectHobbies()
         {
             List<IWebElement> hobbiesList = new List<IWebElement>();
@@ -196,8 +194,8 @@ namespace AutomationProject.Pages
                 foreach (string item in hobbiesArray)
                     if (hobby.Text.Equals(item)) elementMethods.ClickOnElement(hobby);
             }
-
-        }
+        } 
+        */
         public void SelectHobbiesUsingXML(string hobbies)
         {
             List<IWebElement> hobbiesCheckBoxList = new List<IWebElement>();

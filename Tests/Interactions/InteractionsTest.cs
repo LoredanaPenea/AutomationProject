@@ -32,11 +32,7 @@ namespace AutomationProject.Tests.Interactions
 
             homePage.ClickOnInteractionsCard();
             commonPage.GoToMenu("Sortable");
-            interactionsSortablePage.SortGridElements();
-            /*
-            List<IWebElement> listNumbers = driver.FindElements(By.XPath("//div[@class='vertical-list-container mt-4']/div")).ToList();
-            for (int i = 0; i < listNumbers.Count; i++)
-                Console.WriteLine(listNumbers[i].Text); */      
+            interactionsSortablePage.SortGridElements(); 
 
         }
 

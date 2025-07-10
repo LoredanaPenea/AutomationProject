@@ -31,9 +31,10 @@ namespace AutomationProject.Tests.Elements
             homePage.ClickOnElementsCard();
             commonPage.GoToMenu("Text Box");
 
-            textBoxPage.FillInTextBoxForm("Ionela Ionescu", "ionescuionela@test.com", "Street no.15 \n Craiova City", "Street no.15 bis\n Craiova City");
-            textBoxPage.VerifyTextBoxOutput("Ionela Ionescu", "ionescuionela@test.com", "Street no.15 \n Craiova City", "Street no.15 bis\n Craiova City");
+            textBoxPage.FillInTextBoxFormUsingXML(textBoxData);
+            textBoxPage.DisplayOutputData();
 
+            textBoxData = new TextBoxData(2);
             textBoxPage.FillInTextBoxFormUsingXML(textBoxData);
             textBoxPage.DisplayOutputData();
 

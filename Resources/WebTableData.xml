@@ -2,9 +2,17 @@
 	<dataSet_1>
 		<FirstName>Loredana</FirstName>
 		<LastName>Penea</LastName>
-		<Email>loredanapenea@test.com</Email>
+		<Email>loredana.penea@test.com</Email>
 		<Age>37</Age>
 		<Salary>6500</Salary>
 		<Department>Testing</Department>
 	</dataSet_1>
+	<dataSet_2>
+		<FirstName>Ionela</FirstName>
+		<LastName>Ionescu</LastName>
+		<Email>ionela.ionescu@email.com</Email>
+		<Age>47</Age>
+		<Salary>7700</Salary>
+		<Department>Finance</Department>
+	</dataSet_2>
 </dataSets>
