@@ -32,14 +32,8 @@ namespace AutomationProject.Tests.Elements
 
             webTablesPage.AddNewRecordInTable();
             webTablesPage.FillRegistrationFormUsingXML(webTableData);
-           
             int rowIndex = webTablesPage.GetNumberOfRowsFromTable();
             webTablesPage.VerifyDataFromTable(rowIndex, webTableData);
-            /*
-            bool result = webTablesPage.VerifySubmittedDataInTable(rowIndex,"Loredana","Penea", "loredana.penea@test.com", "37", "6500", "Testing");
-            if (result)
-                Console.WriteLine("Is true, data was added correctly in the table");
-            */
 
             webTablesPage.AddNewRecordInTable();
             webTableData = new WebTableData(2);
