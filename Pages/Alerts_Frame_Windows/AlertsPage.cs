@@ -1,4 +1,5 @@
-﻿using AutomationProject.HelperMethods;
+﻿using AutomationProject.Access;
+using AutomationProject.HelperMethods;
 using AutomationProject.Tests;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -91,13 +92,34 @@ namespace AutomationProject.Pages.Alerts_Frame_Windows
 
             }
         }
-        
+
         public void ClickOnPromptButton(string text, string option)
         {
             elementMethods.ClickOnElement(promptButton);
 
             IAlert alertPrompt = webDriver.SwitchTo().Alert();
             alertPrompt.SendKeys(text);
+
+            if (option.Equals("OK"))
+            {
+                alertPrompt.Accept();
+                string resultText = webDriver.FindElement(By.Id("promptResult")).Text;
+                Console.WriteLine(resultText);
+            }
+            else
+            {
+                alertPrompt.Dismiss();
+                Console.WriteLine("You selected Cancel, no text to display");
+
+            }
+        }
+
+        public void ClickOnPromptButtonData(AlertsData alertData, string option)
+        {
+            elementMethods.ClickOnElement(promptButton);
+
+            IAlert alertPrompt = webDriver.SwitchTo().Alert();
+            alertPrompt.SendKeys(alertData.NameForPromptBox);
 
             if (option.Equals("OK"))
             {

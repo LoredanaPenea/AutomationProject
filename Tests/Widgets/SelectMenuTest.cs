@@ -34,8 +34,6 @@ namespace AutomationProject.Tests.Widgets
             commonPage.GoToMenu("Select Menu");
             selectMenuPage.SelectAllOptions(selectMenuData);
            
-
         }
-
     }
 }

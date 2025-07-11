@@ -40,7 +40,6 @@ namespace AutomationProject.Tests
             practiceFormPage.FillPracticeFormUsingXML(practiceFormData);
             practiceFormPage.VerifyDataForm(practiceFormData);
 
-
           /*  
             //Date Picker
             IWebElement dateBirth = webDriver.FindElement(By.Id("dateOfBirthInput"));
@@ -59,6 +58,5 @@ namespace AutomationProject.Tests
             elementMethods.ClickOnElement(datePickerDate);*/
 
         }      
-
     }
 }
